@@ -19,16 +19,32 @@
 
 angular.module('app', [])
     .controller('MainController', function($scope, $http, $log) {
-        github_users_url = 'https://ap.github.com/users/robconery';
+        $scope.username = 'robconery';
+        $scope.repoSortOrder = '-stargazers_count';
+
+        $scope.sortColumn = function(column, order='+'){
+            $scope.repoSortOrder = order + column;
+            $log.info('Finished running sortColumn method');
+        };
+        
+        const onReposComplete = function(response) {
+            $scope.repos = response.data; 
+        };
         const onUserComplete = (response) => {
-            $log.info(response);
             $scope.user = response.data;
+
+            $http.get($scope.user.repos_url)
+                .then(onReposComplete, onError);
         };
         const onError = function(error) {
-            $log.error(error);
-            $scope.error = 'Could not fetch the user';
-        }
+            $scope.error = 'Could not fetch the resource';
+        };
 
-        $http.get(github_users_url)
-            .then(onUserComplete, onError);
+        $scope.search = function(username){
+            github_users_url = 'https://api.github.com/users/' + username;
+
+            $http.get(github_users_url)
+                .then(onUserComplete, onError);
+        };
+
     });
