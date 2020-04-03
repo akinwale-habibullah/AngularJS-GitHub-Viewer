@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='app'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AngularJS - Get Started</title>
     <link rel="stylesheet" href="style.css">
     <script src='node_modules/angular/angular.min.js'></script>
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </head>
-<body ng-app>
+<body ng-controller="MainController">
     <h1>Hello World, AngularJS!</h1>
 
-    {{ 10 / 2 }}
+    <p ng-show="error">{{ error }}</p>
+
+    <div ng-show="user.name">
+        <p>Username: {{ user.name }}</p>
+        <p>Location: {{ user.location }}</p>
+
+        <div>
+            <img ng-src="{{ user.avatar_url }}" alt="{{user.name}}" title="{{user.name}}">
+        </div>
+    </div>
 </body>
 </html>
