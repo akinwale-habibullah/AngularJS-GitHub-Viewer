@@ -1,0 +1,28 @@
+<p>Username: {{ user.name }}</p>
+<p>Location: {{ user.location }}</p>
+
+<div>
+    <img ng-src="{{ user.avatar_url }}" alt="{{user.name}}" title="{{user.name}}">
+</div>
+
+<div>
+    <h4>Repos</h4>
+    <table>
+        <thead>
+            <tr>
+                <th ng-click="sortColumn('id')">Id</th>
+                <th ng-click="sortColumn('name')">Name</th>
+                <th ng-click="sortColumn('stargazers_count', '-')">Stars</th>
+                <th ng-click="sortColumn('language')">Language</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
+                <td> {{ repo.id }} </td>
+                <td>{{ repo.name }}</td>
+                <td>{{ repo.stargazers_count | number }}</td>
+                <td>{{ repo.language }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

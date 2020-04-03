@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <script src='node_modules/angular/angular.min.js'></script>
     <script src="script.js"></script>
+    <script src="github.js"></script>
 </head>
 <body ng-controller="MainController">
     <h1>GitHub Viewer</h1>
 
     <div ng-include="'error.html'" ng-show="error"></div>
+
+    <div ng-include="'countdown.html'" ng-show="countdown"></div>
 
     <p>Username: {{username}}</p>
     <form name="searchUser" ng-submit="search(username)">
@@ -19,35 +22,6 @@
         <input type="submit" value="Search" />
     </form>
 
-    <div ng-show="user.name">
-        <p>Username: {{ user.name }}</p>
-        <p>Location: {{ user.location }}</p>
-
-        <div>
-            <img ng-src="{{ user.avatar_url }}" alt="{{user.name}}" title="{{user.name}}">
-        </div>
-
-        <div>
-            <h4>Repos</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th ng-click="sortColumn('id')">Id</th>
-                        <th ng-click="sortColumn('name')">Name</th>
-                        <th ng-click="sortColumn('stargazers_count', '-')">Stars</th>
-                        <th ng-click="sortColumn('language')">Language</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
-                        <td> {{ repo.id }} </td>
-                        <td>{{ repo.name }}</td>
-                        <td>{{ repo.stargazers_count | number }}</td>
-                        <td>{{ repo.language }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <div ng-show="user.name" ng-include="'userDetails.html'"> </div>
 </body>
 </html>
