@@ -1,0 +1,18 @@
+<h2>Repo Details</h2>
+
+<div>
+    <p>Repo name:  {{repoDetails.name | uppercase}}</p>
+    <p>Stars:  {{repoDetails.stargazers_count | number}}</p>
+    <p>Number of open issues:  {{repoDetails.open_issues_count | number}}</p>
+    
+    <hr>
+    <p>Star gazers: </p>
+    <ul>
+        <li ng-repeat="stargazer in stargazers">
+            <img ng-src="{{ stargazer.avatar_url }}" title="stargazer.login">
+            <p>Login: {{stargazer.login}}</p>
+            <p>{{stargazer.avatar_url}}</p>
+            <hr>
+        </li>
+    </ul>
+</div>

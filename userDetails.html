@@ -9,12 +9,13 @@
 </div>
 
 <div>
-    <h4>Repos</h4>
+    <h4>Repos </h4> 
+    <a href="#/main"><Home/a>
     <table>
         <thead>
             <tr>
                 <th ng-click="sortColumn('id')">Id</th>
-                <th ng-click="sortColumn('name')">Name</th>
+                <th ng-click="sortColumn('name')">Repo</th>
                 <th ng-click="sortColumn('stargazers_count', '-')">Stars</th>
                 <th ng-click="sortColumn('language')">Language</th>
             </tr>
@@ -22,7 +23,9 @@
         <tbody>
             <tr ng-repeat="repo in repos | orderBy: repoSortOrder">
                 <td> {{ repo.id }} </td>
-                <td>{{ repo.name }}</td>
+                <td>
+                    <a href="#!/user/{{user.login}}/repo/{{repo.name}}">{{repo.name}}</a>
+                </td>
                 <td>{{ repo.stargazers_count | number }}</td>
                 <td>{{ repo.language }}</td>
             </tr>

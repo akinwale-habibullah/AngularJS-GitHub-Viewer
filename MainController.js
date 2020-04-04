@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, $log, $interval, $location, github) {
+    .controller('MainController', function($scope, $log, $interval, $location) {
         var timer = null; // store
 
         const decrementCountdown = function(){
@@ -20,5 +20,5 @@ angular.module('app')
 
         $scope.username = 'robconery';
         $scope.countdown = 5;
-        startCountdown(); // start timer
+        startCountdown();   // start timer
     });

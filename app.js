@@ -8,5 +8,9 @@ angular.module('app', ["ngRoute"]).config(function($routeProvider) {
             templateUrl: "userDetails.html",
             controller: "UserController",
         })
+        .when("/user/:username/repo/:reponame", {
+            templateUrl: "repoDetails.html",
+            controller: "RepoController",
+        })
         .otherwise({redirectTo: "/main"});
 });
