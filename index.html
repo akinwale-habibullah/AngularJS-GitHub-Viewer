@@ -6,22 +6,15 @@
     <title>AngularJS - Get Started</title>
     <link rel="stylesheet" href="style.css">
     <script src='node_modules/angular/angular.min.js'></script>
-    <script src="script.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+    <script src="UserController.js"></script>
     <script src="github.js"></script>
 </head>
-<body ng-controller="MainController">
+<body>
     <h1>GitHub Viewer</h1>
 
-    <div ng-include="'error.html'" ng-show="error"></div>
-
-    <div ng-include="'countdown.html'" ng-show="countdown"></div>
-
-    <p>Username: {{username}}</p>
-    <form name="searchUser" ng-submit="search(username)">
-        <input type="search" placeholder="username to find" name="username" ng-model="username" required />
-        <input type="submit" value="Search" />
-    </form>
-
-    <div ng-show="user.name" ng-include="'userDetails.html'"> </div>
+    <div ng-view></div>
 </body>
 </html>

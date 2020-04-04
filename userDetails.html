@@ -1,3 +1,6 @@
+<div ng-include="'error.html'" ng-show="error"></div>
+
+
 <p>Username: {{ user.name }}</p>
 <p>Location: {{ user.location }}</p>
 
@@ -25,4 +28,8 @@
             </tr>
         </tbody>
     </table>
+
+    <a href="#/main">
+        <em>Home</em>
+    </a>
 </div>
